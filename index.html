@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clean URL</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Clean URL</h1>
+      <p class="description">
+        Remove tracking parameters and unnecessary parts from your URLs
+      </p>
+
+      <div class="info">
+        <h3>What this does:</h3>
+        <ul>
+          <li>Removes tracking parameters (utm_*, fbclid, gclid, etc.)</li>
+          <li>Strips unnecessary query parameters</li>
+          <li>Preserves the essential part of the URL</li>
+        </ul>
+      </div>
+
+      <div class="url-form">
+        <textarea id="urlInput" placeholder="Paste your URL here..."></textarea>
+        <button id="cleanButton">Clean</button>
+        <button id="copyButton" disabled>Copy</button>
+        <button id="clearButton">Clear</button>
+      </div>
+
+      <div class="result-container">
+        <h2>Clean URL</h2>
+        <div id="resultBox" class="result-box"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Clean URL - A simple tool to clean your links</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
