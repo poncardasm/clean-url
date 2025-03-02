@@ -59,5 +59,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Listen for system theme changes
   const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  darkModeMediaQuery.addListener(handleSystemThemeChange);
+  darkModeMediaQuery.addEventListener('change', handleSystemThemeChange);
 });
