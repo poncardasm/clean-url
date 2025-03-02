@@ -1,6 +1,17 @@
+// Function to get system theme
+function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+}
+
 // Function to set theme
 function setTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
+  if (theme === 'system') {
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
   localStorage.setItem('theme', theme);
   updateThemeToggleButton();
 }
@@ -20,6 +31,8 @@ function toggleTheme() {
 // Function to update theme toggle button icon
 function updateThemeToggleButton() {
   const button = document.querySelector('.theme-toggle');
+  if (!button) return;
+
   const currentTheme = localStorage.getItem('theme') || 'system';
 
   const icons = {
@@ -45,14 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const button = document.createElement('button');
   button.className = 'theme-toggle';
   button.addEventListener('click', toggleTheme);
-  document.body.appendChild(button);
+  document.querySelector('.container').appendChild(button);
 
   // Set initial theme
   const savedTheme = localStorage.getItem('theme') || 'system';
   setTheme(savedTheme);
 
   // Listen for system theme changes
-  window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .addListener(handleSystemThemeChange);
+  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  darkModeMediaQuery.addListener(handleSystemThemeChange);
 });

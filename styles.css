@@ -17,9 +17,9 @@
   --button-disabled: #bdc3c7;
 }
 
+/* Dark theme - system preference */
 @media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark theme variables */
+  :root:not([data-theme='light']) {
     --bg-primary: #1a1a1a;
     --bg-secondary: #2d2d2d;
     --bg-tertiary: #333333;
@@ -38,7 +38,7 @@
   }
 }
 
-/* Theme toggle class for manual override */
+/* Dark theme - manual override */
 :root[data-theme='dark'] {
   --bg-primary: #1a1a1a;
   --bg-secondary: #2d2d2d;
@@ -83,7 +83,9 @@ body {
   box-shadow: 0 0.125rem 0.625rem var(--shadow-color);
 }
 
-h1 {
+/* Header section with theme toggle */
+.container h1 {
+  padding-right: 3.5rem; /* Make space for theme toggle */
   text-align: center;
   margin-bottom: 0.625rem;
   color: var(--text-heading);
@@ -225,6 +227,7 @@ footer {
   border: 0.0625rem solid var(--border-color);
   cursor: pointer;
   transition: background-color 0.3s;
+  z-index: 1; /* Ensure button stays above other content */
 }
 
 .theme-toggle:hover {
