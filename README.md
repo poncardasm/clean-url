@@ -2,7 +2,7 @@
 
 Remove tracking parameters and unnecessary parts from your URLs.
 
-# How It Works
+## How It Works
 
 - Removes tracking parameters (utm\_\*, fbclid, gclid, etc.)
 - Strips unnecessary query parameters
