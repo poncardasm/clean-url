@@ -8,4 +8,4 @@ Remove tracking parameters and unnecessary parts from your URLs.
 - Strips unnecessary query parameters
 - Preserves the essential part of the URL
 
-![Clean URL](/ss-clean-url.png)
+![Clean URL](ss-clean-url.png)
