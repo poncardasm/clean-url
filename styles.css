@@ -1,3 +1,62 @@
+:root {
+  /* Light theme variables */
+  --bg-primary: #f9f9f9;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f8f9fa;
+  --text-primary: #333333;
+  --text-secondary: #7f8c8d;
+  --text-heading: #2c3e50;
+  --border-color: #dddddd;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --button-primary: #3498db;
+  --button-primary-hover: #2980b9;
+  --button-danger: #e74c3c;
+  --button-danger-hover: #c0392b;
+  --button-success: #2ecc71;
+  --button-success-hover: #27ae60;
+  --button-disabled: #bdc3c7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark theme variables */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #333333;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-heading: #ffffff;
+    --border-color: #404040;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --button-primary: #2980b9;
+    --button-primary-hover: #3498db;
+    --button-danger: #c0392b;
+    --button-danger-hover: #e74c3c;
+    --button-success: #27ae60;
+    --button-success-hover: #2ecc71;
+    --button-disabled: #4a4a4a;
+  }
+}
+
+/* Theme toggle class for manual override */
+:root[data-theme='dark'] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #333333;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-heading: #ffffff;
+  --border-color: #404040;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --button-primary: #2980b9;
+  --button-primary-hover: #3498db;
+  --button-danger: #c0392b;
+  --button-danger-hover: #e74c3c;
+  --button-success: #27ae60;
+  --button-success-hover: #2ecc71;
+  --button-disabled: #4a4a4a;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,29 +67,31 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #f9f9f9;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   padding: 1.25rem;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
+  position: relative;
   max-width: 50rem;
   margin: 0 auto;
-  background-color: white;
+  background-color: var(--bg-secondary);
   border-radius: 0.5rem;
   padding: 1.875rem;
-  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0.125rem 0.625rem var(--shadow-color);
 }
 
 h1 {
   text-align: center;
   margin-bottom: 0.625rem;
-  color: #2c3e50;
+  color: var(--text-heading);
 }
 
 .description {
   text-align: center;
-  color: #7f8c8d;
+  color: var(--text-secondary);
   margin-bottom: 1.875rem;
 }
 
@@ -45,15 +106,17 @@ textarea {
   width: 100%;
   height: 6.25rem;
   padding: 0.9375rem;
-  border: 1px solid #ddd;
+  border: 0.0625rem solid var(--border-color);
   border-radius: 0.25rem;
   font-size: 1rem;
   resize: vertical;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
 button {
   padding: 0.75rem 1.25rem;
-  background-color: #3498db;
+  background-color: var(--button-primary);
   color: white;
   border: none;
   border-radius: 0.25rem;
@@ -63,28 +126,28 @@ button {
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: var(--button-primary-hover);
 }
 
 button:disabled {
-  background-color: #bdc3c7;
+  background-color: var(--button-disabled);
   cursor: not-allowed;
 }
 
 #clearButton {
-  background-color: #e74c3c;
+  background-color: var(--button-danger);
 }
 
 #clearButton:hover {
-  background-color: #c0392b;
+  background-color: var(--button-danger-hover);
 }
 
 #copyButton {
-  background-color: #2ecc71;
+  background-color: var(--button-success);
 }
 
 #copyButton:hover:not(:disabled) {
-  background-color: #27ae60;
+  background-color: var(--button-success-hover);
 }
 
 .result-container {
@@ -100,17 +163,18 @@ h2 {
 .result-box {
   min-height: 3.75rem;
   padding: 0.9375rem;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
+  background-color: var(--bg-tertiary);
+  border: 0.0625rem solid var(--border-color);
   border-radius: 0.25rem;
   word-break: break-all;
+  color: var(--text-primary);
 }
 
 .info {
-  background-color: #f8f9fa;
+  background-color: var(--bg-tertiary);
   padding: 1.25rem;
   border-radius: 0.25rem;
-  border-left: 0.25rem solid #3498db;
+  border-left: 0.25rem solid var(--button-primary);
   margin-bottom: 1.875rem;
 }
 
@@ -143,4 +207,32 @@ footer {
   button {
     flex: 1;
   }
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+  position: absolute;
+  top: 1.875rem;
+  right: 1.875rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-tertiary);
+  border: 0.0625rem solid var(--border-color);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: var(--bg-primary);
+}
+
+.theme-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: var(--text-primary);
 }
