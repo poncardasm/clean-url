@@ -134,6 +134,11 @@ button:disabled {
   background-color: var(--button-success-hover);
 }
 
+  #copyButton:disabled {
+  background-color: var(--button-disabled);
+  cursor: not-allowed;
+}
+
 .result-container {
   margin-bottom: 1.875rem;
   display: flex;
@@ -154,6 +159,8 @@ h2 {
   border-radius: 0.25rem;
   word-break: break-all;
   color: var(--text-primary);
+  font-family: monospace;
+  font-size: 1rem;
 }
 
 .info {
