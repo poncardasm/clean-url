@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const cleanedUrl = cleanUrl(inputUrl);
     resultBox.textContent = cleanedUrl;
-    copyButton.disabled = false;
+    copyButton.disabled = cleanedUrl === 'Invalid URL. Please check your input.';
   });
 
   copyButton.addEventListener('click', function () {
